@@ -1,5 +1,5 @@
 {
-	"name": "nuxt-app",
+	"name": "caboose-crud",
 	"private": true,
 	"overrides": {
 		"vue": "latest"
