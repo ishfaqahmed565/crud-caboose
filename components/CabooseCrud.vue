@@ -16,7 +16,10 @@
 	let editForm = ref();
 	const createFormData = ref({});
 	const editFormData = ref({});
-
+	const filterInputDropDown = ref(null);
+	let showFilterInputDropDown = ref(false);
+	const filterData = ref({});
+	const filterInput = ref("");
 	let props = defineProps({
 		store: {
 			type: Object,
@@ -60,11 +63,10 @@
 			});
 		}
 	};
+	const gotoPage = async function (pageNo) {
+		await props.store.getData(undefined, pageNo);
+	};
 
-	const filterInputDropDown = ref(null);
-	let showFilterInputDropDown = ref(false);
-	const filterData = ref({});
-	const filterInput = ref("");
 	async function rowChange(event) {
 		props.store.setPerPage(event);
 		await props.store.getData(event);
@@ -449,37 +451,48 @@
 						{{ props.store.pagination.total }}
 					</div>
 					<div class="justify-start items-start gap-2 flex">
-						<button class="-rotate-180">
+						<button
+							:class="{
+								'text-gray-500': store.pagination.prev_page_url === null,
+							}"
+							:disabled="store.pagination.prev_page_url === null"
+							class="-rotate-180"
+							@click="gotoPage(props.store.pagination.current_page - 1)"
+						>
 							<svg
-								width="16"
-								height="16"
-								viewBox="0 0 16 16"
-								fill="none"
 								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="w-4"
 							>
 								<path
-									d="M6 12L10 8L6 4"
-									stroke="#8895A7"
-									stroke-width="1.5"
 									stroke-linecap="round"
 									stroke-linejoin="round"
+									d="M8.25 4.5l7.5 7.5-7.5 7.5"
 								/>
 							</svg>
 						</button>
-						<button class="hover:text-black">
+						<button
+							:class="{
+								'text-gray-500': store.pagination.next_page_url === null,
+							}"
+							:disabled="store.pagination.next_page_url === null"
+							@click="gotoPage(props.store.pagination.current_page + 1)"
+						>
 							<svg
-								width="16"
-								height="16"
-								viewBox="0 0 16 16"
-								fill="none"
 								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="w-4"
 							>
 								<path
-									d="M6 12L10 8L6 4"
-									stroke="#8895A7"
-									stroke-width="1.5"
 									stroke-linecap="round"
 									stroke-linejoin="round"
+									d="M8.25 4.5l7.5 7.5-7.5 7.5"
 								/>
 							</svg>
 						</button>

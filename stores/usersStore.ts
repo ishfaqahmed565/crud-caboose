@@ -32,6 +32,8 @@ export const useUsersStore = definePiniaStore("usersStore", {
 			minPerPage: 1,
 			maxPerPage: 20,
 			perPage: 10,
+			next_page_url: "",
+			prev_page_url: null,
 			from: 0,
 			to: 5,
 			total: 100,
@@ -71,7 +73,7 @@ export const useUsersStore = definePiniaStore("usersStore", {
 		},
 	}),
 	actions: {
-		async getData(perPage = 10) {},
+		async getData(perPage = 10, pageNo = 1) {},
 		setPerPage(page: number) {
 			this.pagination.perPage = page;
 		},
