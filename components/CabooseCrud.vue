@@ -174,10 +174,18 @@
 								class="w-full rounded-none rounded-b px-2 py-2 flex flex-col gap-2"
 							>
 								<input
+									v-if="showFilterInputType !== 'date'"
 									v-model="filterInput"
 									type="text"
 									placeholder="Start with"
 									class="w-[8rem] border-b active:outline-none outline-none text-xs"
+								/>
+								<el-date-picker
+									class="dateWidth"
+									v-else
+									v-model="filterInput"
+									format="YYYY-MM-DD HH:mm:ss"
+									value-format="YYYY-MM-DD HH:mm:ss"
 								/>
 
 								<div class="w-full flex justify-end pr-3">
