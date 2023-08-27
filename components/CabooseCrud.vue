@@ -8,9 +8,6 @@
 	import { ElForm } from "element-plus";
 	import { ElTableColumn } from "element-plus";
 	import { ElInputNumber } from "element-plus";
-	import "element-plus/es/components/table/style/css";
-	import "element-plus/es/components/input-number/style/css";
-	import "element-plus/es/components/date-picker/style/css";
 
 	let createForm = ref();
 	let editForm = ref();
