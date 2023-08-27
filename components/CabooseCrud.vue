@@ -6,6 +6,8 @@
 	import { ElTable } from "element-plus";
 	import { ElDatePicker } from "element-plus";
 	import { ElForm } from "element-plus";
+	import { ElTableColumn } from "element-plus";
+	import { ElInputNumber } from "element-plus";
 	import useDetectOutsideClick from "~/composable/useDetectOutsideClick.js";
 
 	const open1 = () => {
