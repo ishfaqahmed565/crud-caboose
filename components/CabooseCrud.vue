@@ -10,13 +10,6 @@
 	import { ElInputNumber } from "element-plus";
 	import useDetectOutsideClick from "~/composable/useDetectOutsideClick.js";
 
-	const open1 = () => {
-		ElNotification({
-			title: "Title",
-			message: h("i", { style: "color: red" }, "Please input required fields"),
-		});
-	};
-
 	let createForm = ref();
 	let editForm = ref();
 	const createFormData = ref({});
